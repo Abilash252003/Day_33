@@ -1,0 +1,33 @@
+
+///100 days of RTL///
+
+///Abilash P///
+
+///8:3 encoder test bench code///
+
+module enc_8_to_3_tb ();
+
+reg  [7:0]A;
+wire [2:0]Y;
+
+enc_8_to_3 ENC1 (.A(A), .Y(Y));
+
+integer i;
+
+initial
+begin
+  A = {7'b0,1'b1};
+  $display("The Input A = %b",A);
+  #20;
+  for(i=1; i<8; i=i+1)
+  begin
+    A= A << 1'b1;
+    $display("The Input A = %b",A);
+    #20;
+  end
+end
+
+initial
+ $monitor ("The Output Y2 = %b, Y1 = %b, Y0 = %b------------Y = %d",Y[2], Y[1], Y[0], Y);
+
+endmodule
